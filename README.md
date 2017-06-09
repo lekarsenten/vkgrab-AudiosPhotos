@@ -7,7 +7,8 @@ What this will do?
 3) Grab all starred(fave) photos for current user, save them to folder, skip existing files.
 
 To get started:
-1) Edit VKGrabber.py -> enter config data (top block)
-2) Run script
+1) Run script
+2) Enter credentials
+3) Wait
 
 P.S. you may comment out either audiograbber.grab or photograbber.grab if you don't need this functionality
