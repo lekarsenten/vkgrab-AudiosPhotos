@@ -12,7 +12,6 @@ import urllib
 import urlparse
 import os.path
 import collections
-import VKGrabber
 
 class PhotoGrabber(object):
     def __init__(self, vksession):
@@ -32,9 +31,9 @@ class PhotoGrabber(object):
             photoFile = urllib.URLopener()
             photoFile.retrieve(url, filepath)
 
-    def grab(self):
+    def grab(self, userID):
         tools = vk_api.VkTools(self.vk_session)
-        photos = tools.get_all_iter('photos.getAll', 200, {'owner_id': VKGrabber.userID,
+        photos = tools.get_all_iter('photos.getAll', 200, {'owner_id': userID,
                                                            'extended' : 0,
                                                            'photo_sizes' : 1,
                                                            'no_service_albums' : 0})
@@ -53,7 +52,7 @@ class PhotoGrabber(object):
             self.downloadIfNotExists(photosource, fpath)
 
         #download saved photos. Saved photos won't return via getAll (but should)
-        savedPhotos = tools.get_all_iter('photos.get', 1000, {'owner_id' : VKGrabber.userID,
+        savedPhotos = tools.get_all_iter('photos.get', 1000, {'owner_id' : userID,
                                                               'album_id' : -15,
                                                            'extended' : 0,
                                                            'photo_sizes' : 1,

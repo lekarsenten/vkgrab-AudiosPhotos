@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>8ab27b7c-83ca-4d70-8a90-13038f54e77d</ProjectGuid>
+    <ProjectGuid>{b56f5e5e-2de8-4451-a787-65e71676c54f}</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
     <StartupFile>VKGrabber.py</StartupFile>

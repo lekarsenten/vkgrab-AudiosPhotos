@@ -9,15 +9,15 @@ Copyright (C) 2017
 """
 
 #VK login
-login = "tempmail@gmail.com"
+#login = "tempmail@gmail.com"
 #VK password
-password = "secret"
+#password = "secret"
 #VK user id. 
 #I.E. last part of audios URL.
-userID = 12345678
+#userID = 12345678
 
 #audios folder path
-audiosPath = "vkAudio"
+audiosPath = "vkAudio/"
 #photos root path
 photosRoot = "vkPhotos/"
 subfolders = {-7: "wall/", #subfolder for photos from wall album
@@ -54,9 +54,17 @@ favePhotosFolder = "fave/"
 import vk_api
 import grab_audio
 import grab_photo
+import getpass
 
 def main():
-    
+    global login
+    global password
+    global userID
+    login = raw_input("enter vk login(email)\n")
+    print("enter vk password\n")
+    password = getpass.getpass()
+    userID = input("enter vk user id (number, you may grab it from last tab of your audios url)\n")
+
     vk_session = vk_api.VkApi(login, password)
 
     try:
@@ -66,9 +74,9 @@ def main():
         return
 
     audiograbber = grab_audio.AudioGrabber(vk_session)
-    audiograbber.grab()
+    audiograbber.grab(userID)
     photograbber = grab_photo.PhotoGrabber(vk_session)
-    photograbber.grab()
+    photograbber.grab(userID)
 
 if __name__ == '__main__':
     main()

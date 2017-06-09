@@ -14,7 +14,7 @@ import string
 import os.path
 import unicodedata as ud
 from vk_api.audio import VkAudio
-from VKGrabber import userID
+from VKGrabber import audiosPath
 
 all_unicode = ''.join(unichr(i) for i in xrange(65536))
 unicode_letters = ''.join(c for c in all_unicode if ud.category(c)=='Lu' or ud.category(c)=='Ll')
@@ -34,12 +34,15 @@ class AudioGrabber(object):
         """
         self.vk_session = vkSession
 
-    def grab(self):
+    def grab(self, userID):
         vkaudio = VkAudio(self.vk_session)
 
         artists = collections.Counter()
 
         offset = 0
+
+        if not os.path.exists(audiosPath):
+            os.makedirs(audiosPath)
 
         while True:
             audios = vkaudio.get(owner_id=userID, offset=offset)
@@ -56,7 +59,7 @@ class AudioGrabber(object):
                                                  #cannot be printed, but are ok in filename
                 except:
                     print("Whoops!!!")
-                fname = "vkmusic/" + fname + ".mp3"
+                fname = audiosPath + fname + ".mp3"
                 if not os.path.isfile(fname):
                     audioFile.retrieve(audio['url'], fname)
 
