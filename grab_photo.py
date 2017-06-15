@@ -12,6 +12,7 @@ import urllib
 import urlparse
 import os.path
 import collections
+import VKGrabber
 
 class PhotoGrabber(object):
     def __init__(self, vksession):
