@@ -63,7 +63,7 @@ def main():
     login = raw_input("enter vk login(email)\n")
     print("enter vk password\n")
     password = getpass.getpass()
-    userID = input("enter vk user id (number, you may grab it from last tab of your audios url)\n")
+    userID = input("enter vk user id (number, you may grab it from last part of your audios url)\n")
 
     vk_session = vk_api.VkApi(login, password)
 

@@ -45,7 +45,7 @@ class AudioGrabber(object):
             os.makedirs(audiosPath)
 
         while True:
-            audios = vkaudio.get(owner_id=userID, offset=offset)
+            audios = vkaudio.get(owner_id=userID)
 
             if not audios:
                 break
